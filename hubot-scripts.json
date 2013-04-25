@@ -1,0 +1,10 @@
+[
+  "achievement_unlocked.coffee",
+  "alot.coffee",
+  "github-status.coffee",
+  "heroku-status.coffee",
+  "redis-brain.coffee",
+  "shipit.coffee",
+  "tweet.coffee",
+  "twss.coffee"  
+]
