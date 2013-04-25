@@ -60,3 +60,9 @@ module.exports = (robot) ->
         current_target = data.shared[options.nest_id].target_temperature
         msg.send "The nest is currently set to " + nest.ctof(current_target) + "ºF."
 
+  robot.router.get "/nest/status", (req, res) ->
+    nest.login options.login, options.password, (data) ->
+      nest.fetchStatus (data) ->
+        current_target = data.shared[options.nest_id].target_temperature
+        msg.send "{\"current_temperature\": \"" + nest.ctof(current_target) + "\"}"
+    
