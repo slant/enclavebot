@@ -35,7 +35,6 @@ changeTemperatureTo = (toF, msg) ->
 
 module.exports = (robot) ->
   robot.respond /how (warm|cold) is it\?/i, (msg) ->
-    msg.send("Checking...")
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_temp = data.shared[options.nest_id].current_temperature
@@ -56,7 +55,6 @@ module.exports = (robot) ->
       changeTemperatureTo msg.match[1], msg
 
   robot.respond /nest status/i, (msg) ->
-    msg.send("Checking...")
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_target = data.shared[options.nest_id].target_temperature
