@@ -2,10 +2,11 @@
 #   Control your nest thermostat.
 #
 # Commands:
-#   hubot how (warm|cold) is it - current temperature
+#   hubot how (warm|cold) is it? - show the current temperature
 #   hubot it's warm - set the nest 1 degree Fahrenheit lower
 #   hubot it's cold - set the nest 1 degree Fahrenheit higher
-#   hubot nest status - current nest setting
+#   hubot nest status - show the current nest setting
+#   hubot nest set <temp> - set the nest to the specified temperature
 
 # https://github.com/kasima/nesting
 nest = require('nesting')
@@ -26,12 +27,9 @@ changeTemperatureBy = (byF, msg) ->
     nest.setTemperature options.nest_id, new_temp
 
 changeTemperatureTo = (toF, msg) ->
-  console.log toF
   nest.fetchStatus (data) ->
     toC = nest.ftoc(toF)
     msg.send "I've set the nest to " + nest.ctof(toC) + 'ºF for you.'
-    console.log nest.ctof(toC)
-    console.log toC
     nest.setTemperature options.nest_id, toC
 
 
