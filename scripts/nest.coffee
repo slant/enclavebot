@@ -64,5 +64,5 @@ module.exports = (robot) ->
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_target = data.shared[options.nest_id].target_temperature
-        msg.send "{\"current_temperature\": \"" + nest.ctof(current_target) + "\"}"
+        res.end "{\"current_temperature\": \"" + nest.ctof(current_target) + "\"}"
     
