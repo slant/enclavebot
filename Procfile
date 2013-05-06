@@ -1,1 +1,1 @@
-web: bin/hubot -a campfire -n EnclaveBot --alias '/'
+app: bin/hubot -a campfire -n EnclaveBot --alias '/'
