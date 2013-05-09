@@ -1,12 +1,19 @@
+# Name:
+#   Nest
+#
 # Description:
 #   Control your nest thermostat.
 #
 # Commands:
 #   hubot how (warm|cold) is it? - show the current temperature
-#   hubot it's warm - set the nest 1 degree Fahrenheit lower
-#   hubot it's cold - set the nest 1 degree Fahrenheit higher
+#   it's warm - set the nest 1 degree Fahrenheit lower
+#   it's cold - set the nest 1 degree Fahrenheit higher
 #   hubot nest status - show the current nest setting
 #   hubot nest set <temp> - set the nest to the specified temperature
+#
+# Lovingly ganked from m2mIO
+#   https://github.com/m2mIO/2lemetry-hubot/blob/master/scripts/nest.coffee
+
 
 # https://github.com/kasima/nesting
 nest = require('nesting')
@@ -54,7 +61,7 @@ module.exports = (robot) ->
     nest.login options.login, options.password, (data) ->
       changeTemperatureTo msg.match[1], msg
 
-  robot.respond /(nest|n) status/i, (msg) ->
+  robot.respond /(nest|n) (status|st)/i, (msg) ->
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_target = data.shared[options.nest_id].target_temperature
