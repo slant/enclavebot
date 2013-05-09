@@ -50,11 +50,11 @@ module.exports = (robot) ->
     nest.login options.login, options.password, (data) ->
       changeTemperatureBy +1, msg
 
-  robot.respond /nest set (\d{2}).*/i, (msg) ->
+  robot.respond /(nest|n) set (\d{2}).*/i, (msg) ->
     nest.login options.login, options.password, (data) ->
       changeTemperatureTo msg.match[1], msg
 
-  robot.respond /nest status/i, (msg) ->
+  robot.respond /(nest|n) status/i, (msg) ->
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_target = data.shared[options.nest_id].target_temperature
