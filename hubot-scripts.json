@@ -4,7 +4,8 @@
   "github-status.coffee",
   "heroku-status.coffee",
   "redis-brain.coffee",
+  "ruby.coffee",
   "shipit.coffee",
   "tweet.coffee",
-  "twss.coffee"  
+  "twss.coffee"
 ]
