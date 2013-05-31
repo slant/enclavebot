@@ -5,7 +5,7 @@
 #   Control your nest thermostat.
 #
 # Commands:
-#   hubot how (warm|cold) is it? - show the current temperature
+#   how (warm|cold) is it? - show the current temperature
 #   it's warm - set the nest 1 degree Fahrenheit lower
 #   it's cold - set the nest 1 degree Fahrenheit higher
 #   hubot nest status - show the current nest setting
@@ -41,7 +41,7 @@ changeTemperatureTo = (toF, msg) ->
 
 
 module.exports = (robot) ->
-  robot.respond /how (warm|cold) is it\?/i, (msg) ->
+  robot.hear /how (warm|cold|hot) is it\??/i, (msg) ->
     nest.login options.login, options.password, (data) ->
       nest.fetchStatus (data) ->
         current_temp = data.shared[options.nest_id].current_temperature
