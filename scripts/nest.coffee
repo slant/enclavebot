@@ -59,7 +59,7 @@ module.exports = (robot) ->
 
   robot.respond /(nest|n) set (\d{2}).*/i, (msg) ->
     nest.login options.login, options.password, (data) ->
-      changeTemperatureTo msg.match[1], msg
+      changeTemperatureTo msg.match[2], msg
 
   robot.respond /(nest|n) (status|st)/i, (msg) ->
     nest.login options.login, options.password, (data) ->

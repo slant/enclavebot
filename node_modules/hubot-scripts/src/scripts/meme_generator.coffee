@@ -27,7 +27,11 @@
 #   hubot memegen <text> you're gonna have a bad time - Bad Time Ski Instructor
 #   hubot memegen one does not simply <text> - Lord of the Rings Boromir
 #   hubot memegen it looks like (you|you're) <text> - Generates Clippy
-#
+#   hubot memegen AM I THE ONLY ONE AROUND HERE <text> - The Big Lebowski
+#   hubot memegen <text> NOT IMPRESSED - Generates McKayla Maroney
+#   hubot memegen PREPARE YOURSELF <text> - Generates GoT
+#   hubot memegen WHAT IF I TOLD YOU <text> - Generates Morpheus
+#   hubot memegen <text> BETTER DRINK MY OWN PISS - Generates Bear Grylls
 # Author:
 #   skalnik
 
@@ -108,6 +112,31 @@ module.exports = (robot) ->
         regex: /(memegen )?(it looks like you're|it looks like you) (.*)/i,
         generatorID: 20469,
         imageID: 1159769
+      },
+      {
+        regex: /(memegen )?(AM I THE ONLY ONE AROUND HERE) (.*)/i,
+        generatorID: 953639,
+        imageID: 4240352
+      }
+      {
+        regex: /(memegen)?(.*)(NOT IMPRESSED*)/i,
+        generatorID: 1420809,
+        imageID: 5883168
+      },
+      {
+        regex: /(memegen)?(PREPARE YOURSELF) (.*)/i,
+        generatorID: 414926,
+        imageID: 2295701
+      },
+      {
+        regex: /(memegen)?(WHAT IF I TOLD YOU) (.*)/i,
+        generatorID: 1118843,
+        imageID: 4796874
+      },
+      {
+        regex: /(memegen)?(.*) (BETTER DRINK MY OWN PISS)/i,
+        generatorID: 92,
+        imageID: 89714
       }
     ]
 
@@ -124,8 +153,15 @@ module.exports = (robot) ->
     memeResponder robot, meme
 
   robot.respond /(memegen )?k(?:ha|ah)nify (.*)/i, (msg) ->
-    memeGenerator msg, 6443, 1123022, "", khanify(msg.match[2]), (url) ->
-      msg.send url
+    if Math.random() > 0.5
+      # Kirk khan
+      memeGenerator msg, 6443, 1123022, "", khanify(msg.match[2]), (url) ->
+        msg.send url
+    else
+      # Spock khan
+      memeGenerator msg, 2103732, 8814557, "", khanify(msg.match[2]), (url) ->
+        msg.send url
+
 
   robot.respond /(memegen )?(IF .*), ((ARE|CAN|DO|DOES|HOW|IS|MAY|MIGHT|SHOULD|THEN|WHAT|WHEN|WHERE|WHICH|WHO|WHY|WILL|WON\'T|WOULD)[ \'N].*)/i, (msg) ->
     memeGenerator msg, 17, 984, msg.match[2], msg.match[3] + (if msg.match[3].search(/\?$/)==(-1) then '?' else ''), (url) ->

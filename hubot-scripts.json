@@ -6,6 +6,5 @@
   "redis-brain.coffee",
   "ruby.coffee",
   "shipit.coffee",
-  "tweet.coffee",
   "twss.coffee"
 ]
